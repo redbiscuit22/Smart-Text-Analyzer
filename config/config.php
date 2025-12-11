@@ -1,6 +1,6 @@
- <?php
+<?php
 /**
- * Configuration File for Smart Text Analyzer Pro
+ * Configuration File for Smart Text Analyzer 
  * 
  * Important: Create a .env file in the root directory with your actual API keys
  * For security, never commit .env file to version control
@@ -15,7 +15,7 @@ if (file_exists(__DIR__ . '/../.env')) {
 }
 
 // Application Configuration
-define('APP_NAME', 'Smart Text Analyzer Pro');
+define('APP_NAME', 'Smart Text Analyzer ');
 define('APP_VERSION', '1.0.0');
 define('APP_ENV', getenv('APP_ENV') ?: 'development');
 define('APP_DEBUG', getenv('APP_DEBUG') ?: true);

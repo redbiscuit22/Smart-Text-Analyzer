@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Text Analyzer Pro</title>
+    <title>Smart Text Analyzer </title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-brain"></i> Smart Text Analyzer Pro</h1>
+            <h1><i class="fas fa-brain"></i> Smart Text Analyzer </h1>
             <p>Advanced Text Analysis with Machine Learning Integration</p>
             <div style="margin-top: 1rem;">
                 <span class="badge" style="background: rgba(255,255,255,0.2); padding: 0.3rem 0.8rem; border-radius: 20px;">

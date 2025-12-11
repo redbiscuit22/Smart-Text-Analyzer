@@ -15,94 +15,8 @@ if (empty($result)) {
     echo '<div class="alert alert-info">No analysis results to display.</div>';
     return;
 }
-?>
 
-<div class="result-container">
-    <div class="result-header">
-        <h2 class="result-title">
-            <i class="fas fa-chart-bar"></i> Analysis Results
-        </h2>
-        <span class="result-type badge">
-            <?php echo ucfirst($model_type); ?> Analysis
-        </span>
-    </div>
-    
-    <!-- Model Source Indicator -->
-    <?php if (isset($result['source'])): ?>
-    <div class="source-indicator">
-        <span class="badge <?php echo $result['source'] === 'huggingface' ? 'bg-success' : 'bg-info'; ?>">
-            <i class="fas fa-<?php echo $result['source'] === 'huggingface' ? 'cloud' : 'desktop'; ?>"></i>
-            Powered by <?php echo $result['source'] === 'huggingface' ? 'Hugging Face API' : 'Local Processing'; ?>
-        </span>
-        <?php if (isset($result['model'])): ?>
-        <small class="text-muted ms-2">
-            <i class="fas fa-cogs"></i> Model: <?php echo htmlspecialchars($result['model']); ?>
-        </small>
-        <?php endif; ?>
-    </div>
-    <?php endif; ?>
-    
-    <!-- Text Preview -->
-    <div class="text-preview mt-3">
-        <h5><i class="fas fa-file-alt"></i> Text Analyzed:</h5>
-        <div class="preview-box">
-            <?php echo nl2br(htmlspecialchars(substr($text_preview, 0, 300))); ?>
-            <?php if (strlen($text_preview) > 300): ?>
-            <span class="text-muted">... (truncated)</span>
-            <?php endif; ?>
-        </div>
-    </div>
-    
-    <!-- Main Results -->
-    <div class="main-results mt-4">
-        <?php
-        switch ($model_type) {
-            case 'sentiment':
-                $this->displaySentimentResults($result);
-                break;
-            case 'keywords':
-                $this->displayKeywordResults($result);
-                break;
-            case 'emotion':
-                $this->displayEmotionResults($result);
-                break;
-            case 'summarize':
-                $this->displaySummaryResults($result);
-                break;
-            case 'advanced':
-                $this->displayAdvancedResults($result);
-                break;
-            default:
-                $this->displayBasicResults($result);
-                break;
-        }
-        ?>
-    </div>
-    
-    <!-- Metadata -->
-    <?php if (isset($result['metadata'])): ?>
-    <div class="metadata mt-4 pt-3 border-top">
-        <h6><i class="fas fa-info-circle"></i> Analysis Details:</h6>
-        <div class="row">
-            <div class="col-md-6">
-                <small class="text-muted">
-                    <i class="fas fa-clock"></i> Processed in: 
-                    <?php echo $result['metadata']['processing_time_ms'] ?? 'N/A'; ?>ms
-                </small>
-            </div>
-            <div class="col-md-6">
-                <small class="text-muted">
-                    <i class="fas fa-calendar"></i> Timestamp: 
-                    <?php echo $result['metadata']['timestamp'] ?? date('Y-m-d H:i:s'); ?>
-                </small>
-            </div>
-        </div>
-    </div>
-    <?php endif; ?>
-</div>
-
-<?php
-// Helper methods for displaying different result types
+// Helper functions moved OUTSIDE the HTML
 function displaySentimentResults($result): void {
     ?>
     <div class="sentiment-results">
@@ -332,11 +246,12 @@ function displayAdvancedResults($result): void {
         <ul class="nav nav-tabs mb-4" id="analysisTabs" role="tablist">
             <?php
             $tabs = ['sentiment', 'keywords', 'emotion', 'statistics', 'complexity'];
-            foreach ($tabs as $index => $tab):
+            $firstTab = true;
+            foreach ($tabs as $tab):
                 if (isset($analyses[$tab])):
             ?>
             <li class="nav-item" role="presentation">
-                <button class="nav-link <?php echo $index === 0 ? 'active' : ''; ?>" 
+                <button class="nav-link <?php echo $firstTab ? 'active' : ''; ?>" 
                         id="<?php echo $tab; ?>-tab" 
                         data-bs-toggle="tab" 
                         data-bs-target="#<?php echo $tab; ?>" 
@@ -346,6 +261,7 @@ function displayAdvancedResults($result): void {
                 </button>
             </li>
             <?php
+                    $firstTab = false;
                 endif;
             endforeach;
             ?>
@@ -353,9 +269,13 @@ function displayAdvancedResults($result): void {
         
         <!-- Tab Content -->
         <div class="tab-content" id="analysisTabsContent">
-            <?php foreach ($tabs as $index => $tab): ?>
+            <?php 
+            $tabs = ['sentiment', 'keywords', 'emotion', 'statistics', 'complexity'];
+            $firstTab = true;
+            foreach ($tabs as $tab): 
+            ?>
             <?php if (isset($analyses[$tab])): ?>
-            <div class="tab-pane fade <?php echo $index === 0 ? 'show active' : ''; ?>" 
+            <div class="tab-pane fade <?php echo $firstTab ? 'show active' : ''; ?>" 
                  id="<?php echo $tab; ?>" 
                  role="tabpanel">
                 <?php
@@ -378,7 +298,10 @@ function displayAdvancedResults($result): void {
                 }
                 ?>
             </div>
-            <?php endif; ?>
+            <?php 
+                $firstTab = false;
+            endif; 
+            ?>
             <?php endforeach; ?>
         </div>
     </div>
@@ -508,3 +431,88 @@ function displayBasicResults($result): void {
     <?php
 }
 ?>
+
+<!-- HTML OUTPUT STARTS HERE -->
+<div class="result-container">
+    <div class="result-header">
+        <h2 class="result-title">
+            <i class="fas fa-chart-bar"></i> Analysis Results
+        </h2>
+        <span class="result-type badge">
+            <?php echo ucfirst($model_type); ?> Analysis
+        </span>
+    </div>
+    
+    <!-- Model Source Indicator -->
+    <?php if (isset($result['source'])): ?>
+    <div class="source-indicator">
+        <span class="badge <?php echo $result['source'] === 'huggingface' ? 'bg-success' : 'bg-info'; ?>">
+            <i class="fas fa-<?php echo $result['source'] === 'huggingface' ? 'cloud' : 'desktop'; ?>"></i>
+            Powered by <?php echo $result['source'] === 'huggingface' ? 'Hugging Face API' : 'Local Processing'; ?>
+        </span>
+        <?php if (isset($result['model'])): ?>
+        <small class="text-muted ms-2">
+            <i class="fas fa-cogs"></i> Model: <?php echo htmlspecialchars($result['model']); ?>
+        </small>
+        <?php endif; ?>
+    </div>
+    <?php endif; ?>
+    
+    <!-- Text Preview -->
+    <div class="text-preview mt-3">
+        <h5><i class="fas fa-file-alt"></i> Text Analyzed:</h5>
+        <div class="preview-box">
+            <?php echo nl2br(htmlspecialchars(substr($text_preview, 0, 300))); ?>
+            <?php if (strlen($text_preview) > 300): ?>
+            <span class="text-muted">... (truncated)</span>
+            <?php endif; ?>
+        </div>
+    </div>
+    
+    <!-- Main Results -->
+    <div class="main-results mt-4">
+        <?php
+        switch ($model_type) {
+            case 'sentiment':
+                displaySentimentResults($result);
+                break;
+            case 'keywords':
+                displayKeywordResults($result);
+                break;
+            case 'emotion':
+                displayEmotionResults($result);
+                break;
+            case 'summarize':
+                displaySummaryResults($result);
+                break;
+            case 'advanced':
+                displayAdvancedResults($result);
+                break;
+            default:
+                displayBasicResults($result);
+                break;
+        }
+        ?>
+    </div>
+    
+    <!-- Metadata -->
+    <?php if (isset($result['metadata'])): ?>
+    <div class="metadata mt-4 pt-3 border-top">
+        <h6><i class="fas fa-info-circle"></i> Analysis Details:</h6>
+        <div class="row">
+            <div class="col-md-6">
+                <small class="text-muted">
+                    <i class="fas fa-clock"></i> Processed in: 
+                    <?php echo $result['metadata']['processing_time_ms'] ?? 'N/A'; ?>ms
+                </small>
+            </div>
+            <div class="col-md-6">
+                <small class="text-muted">
+                    <i class="fas fa-calendar"></i> Timestamp: 
+                    <?php echo $result['metadata']['timestamp'] ?? date('Y-m-d H:i:s'); ?>
+                </small>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+</div>

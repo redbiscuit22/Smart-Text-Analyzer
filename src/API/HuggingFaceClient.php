@@ -15,7 +15,7 @@ class HuggingFaceClient {
         'sentiment' => 'distilbert-base-uncased-finetuned-sst-2-english',
         'keywords' => 'yanekyuk/bert-keyword-extractor',
         'emotion' => 'j-hartmann/emotion-english-distilroberta-base',
-        'summarization' => 'facebook/bart-large-cnn',
+      
         'translation' => 'Helsinki-NLP/opus-mt-en-es'
     ];
     
