@@ -1,0 +1,39 @@
+# Dependencies
+/vendor/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Logs
+*.log
+logs/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temp files
+*.tmp
+*.temp
+
+# Cache
+cache/
+
+# Uploads
+uploads/
+
+# OS generated files
+ehthumbs.db
+Icon?
+
+# Deployment files
+deploy.sh
+deploy/

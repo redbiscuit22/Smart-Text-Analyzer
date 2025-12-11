@@ -1,0 +1,15 @@
+{
+    "name": "smart-text-analyzer/pro",
+    "description": "PHP Web App with ML Integration",
+    "type": "project",
+    "require": {
+        "php": "^8.0",
+        "rubix/ml": "^2.5",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SmartTextAnalyzer\\": "src/"
+        }
+    }
+}
