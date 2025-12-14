@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: smart-text-analyzer
+    env: php
+    buildCommand: "./render-build.sh"
+    startCommand: "php -S 0.0.0.0:8080"
+    envVars:
+      - key: PHP_VERSION
+        value: 8.2
