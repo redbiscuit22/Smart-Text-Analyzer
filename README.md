@@ -39,71 +39,11 @@ The application analyzes text content to provide the following:
 | Catrina Guevarra | 0323-3690 | Documentation Lead | Testing, Presentation, Documentation |
 
 ---
+##Link to deployed system
+https://smart-text-analyzer.infinityfreeapp.com/?i=1&brid=eR3PGc-nOpyBReBJNu5ZDA
 
-## Design Thinking Documentation  
+##Link to video presentation
 
-### Hills (Project Goals)  
 
-1. **Hill 1:** Enable students to perform text analysis without ML expertise  
-2. **Hill 2:** Provide accurate analysis results within 5 seconds  
-3. **Hill 3:** Maintain intuitive interface for first-time student users  
-
-### Sponsor User  
-
-**Name:** Student Researcher  
-**Profile:** College student working on academic projects  
-**Needs:**  
-- Text analysis for research papers  
-- Sentiment analysis for surveys  
-- Keyword extraction for literature reviews  
-**Technical Level:** Basic computer literacy, no ML experience required  
-
-### Playback Improvements  
-
-1. **Iteration 1:** Simplified technical terminology for student users  
-2. **Iteration 2:** Added sample text options for testing  
-3. **Iteration 3:** Improved mobile responsiveness for various devices  
-4. **Iteration 4:** Enhanced error messages and validation feedback  
-
----
-
-## System Architecture  
-
-### Architecture Diagram  
-
-```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   User Interface│────▶│   PHP Backend   │────▶│   ML Processing │
-│   (HTML/CSS/JS) │     │  (Controller)   │     │  (Rubix ML)     │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-         │                        │                        │
-         ▼                        ▼                        ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   User Input    │     │   Business      │     │   Analysis      │
-│   (Text Form)   │     │   Logic         │     │   Results       │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-```
-
-### Data Flow  
-
-1. **Input:** User submits text through web form  
-2. **Processing:** PHP backend processes request and applies ML algorithms  
-3. **Analysis:** Multiple analysis types performed simultaneously  
-4. **Output:** Results formatted and displayed to user  
-5. **Storage:** Optional database storage for analysis history  
-
-### Libraries Used  
-
-1. **Rubix ML:** Machine learning library from Packagist.org  
-2. **Composer:** PHP dependency management  
-3. **Tailwind CSS:** Frontend styling framework  
-4. **Feather Icons:** Icon library for UI elements  
-
-### ML Integration  
-
-**Library:** Rubix ML (via Composer from Packagist.org)  
-**Algorithms:** Pattern matching, statistical analysis, heuristic methods  
-**Processing:** Text preprocessing, feature extraction, classification  
-**Output:** Confidence scores, probability distributions, accuracy metrics  
-
----
+##Link to Canva/PowerPoint
+https://www.canva.com/design/DAG7h-apCio/KUiMU7a39fApKuhy2KS_qA/edit?brid=0mYk-x-hwElhHMiiWKkr3A
