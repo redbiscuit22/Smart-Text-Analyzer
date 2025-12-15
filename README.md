@@ -39,11 +39,12 @@ The application analyzes text content to provide the following:
 | Catrina Guevarra | 0323-3690 | Documentation Lead | Testing, Presentation, Documentation |
 
 ---
-##Link to deployed system
+Link to deployed system
 https://smart-text-analyzer.infinityfreeapp.com/?i=1&brid=eR3PGc-nOpyBReBJNu5ZDA
 
-##Link to video presentation
+Link to video presentation
+https://drive.google.com/file/d/1D1J4uyiQVUzXiuaw-RvLT7-ud51R6oFe/view?usp=drive_link
 
-
-##Link to Canva/PowerPoint
+Link to Canva/PowerPoint
 https://www.canva.com/design/DAG7h-apCio/KUiMU7a39fApKuhy2KS_qA/edit?brid=0mYk-x-hwElhHMiiWKkr3A
+
